@@ -1,0 +1,201 @@
+To shorten pandas import pandas as pd
+call data
+df = pd.read_csv(directory)
+read_csv calls the data and transforms into a dataframe data type
+data frame is like a spread sheet in excel
+series is a data type working like a column of a spread sheet
+df.head() shows the first 5 rows of the data frame
+df.tail() shows the last 5 rows of the data frame
+type(variable) shows the datatype of the variable like dataframe
+df.shape shows the (number of rows, number of columns)
+df.columns shows the names of columns
+df.info() shows the information of the data frame
+object in pandas is equal to the string in python
+
+subtracting a certain column
+ = df['name of column']
+datatype will be the series
+we can subtract more than one columns by [['col1','col2']]
+double bracket is used because first making a list for names of the cols then sending the list
+data to the data frame. The result type is also the dataframe since two or columns are existed
+
+There are two method to extract rows from the dataframe
+use iloc or loc
+For loc df.loc[index]
+For iloc df.loc[row number]
+Index both row number in the pandas are not existed in original data, but when data is imported
+pandas automatically set it for each row. For index, it is unchanged even if row is deleted and index canbe also object
+However, row number is absolute location of the row, so 0 is always the first row of the dataframe
+For extracting multiple rows [[]] double bracket is used
+for both iloc and loc slicing can be used
+The returned value of iloc and loc are object = string not the series
+
+For extracting a certain row in the certain column [row,col]
+warning for loc column is called with the column name
+iloc is called with column number in integer
+This is the difference b/n iloc and loc
+
+Simple slicing
+[:] = all
+[0:6] 0 to 5
+[0:6:2] 0 to 5 with every 2 number
+df.groupby('')
+grouping rows with the same column given by .groupby method
+then['col']to extract a certain column
+
+.mean()
+calculate the mean
+.nunique()
+count number of grouped unique values
+.plot()
+show the graph
+%matplotlib inline
+import matplotlib.pyplot as ply
+
+To create series
+pd.Series() inside the parenthesis list is sent
+,index = [] to set index as another value then 0
+To create dataframe
+to send a dictionary to methed
+pd.DataFrame(
+{ 'col1' : [col1 lists],
+'col2' : [col2 lists]
+})
+,index = for naming indexs
+,columns = for naming columns
+
+Series.index shows the index of the series
+Series.values shows the data
+Series.keys() shows the index of the series as .index
+[num] to call for the exact list
+
+Series can be compared and return boolean
+e.g ages > ages.mean() will return boolean list satisfies
+Series can be called with boolean
+e.g Series[False, True] then only second value will be displayed
+
+Series is a vector so addition multiplication all follows the vector calculation
+
+Series.sort_index(ascending = ) to sort the data in index number
+
+DataFrame can be also accessed with boolean by comparing extracted col
+
+from string to date type
+pd.to_datetime(col with date, format = '%Y-%m-%d')
+
+add columns in dataframe = dataframe['new col name']
+= Series
+
+To shuffle the data in col
+random.seed(int)
+random.shuffle(seires with a certain col)
+
+delete col = Dataframe.drop(cerain col, axis = 1)
+axis = 1  columns
+axis = 0 for index
+
+save it
+DataFrame.to_csv('directory')
+
+
+Connecting data
+pd.concat()
+is connecting dataframe with the same column (adding new data)
+.append(new Df) is for adding one datafram
+if one wants to connect the data for more columns same concat is used but add, axis = 1
+
+concat combines all data with the same col so
+if one dataframe has a certain col that another does not 
+a new col is created and the value will be NAn
+To avoid this situation join ='inner' is used not to add a new col but combine only the cols that both dfs have
+
+.merge
+df.merge(df2 left_on = col from df, right_on =col from df2)
+concat if left_on and right_on are equl
+
+missing data
+are dealt with numpy
+from numpy iport NaN,NAN,nan
+it is different from 0 can be checked by pd.isnull() method
+method to check the number of missing values
+df.count() counts the values that are not missing values
+numpy.count_nonzero counts values that are not non zero
+
+a method to deal with NAN
+to change to a certain value
+e.g
+df.fillna(value)
+to fille NAN by copying the value of previous row
+df.fillna(method ='ffill')
+to fille NAN by copying the value of after row
+df.interpolate()
+to fille NAN by copying the mean value of previous and after rows
+df.dropna()
+removes the rows containing na values
+
+melt method
+id_vars col to be unchanged
+value_vars col to be changed into rows
+var_name set name of col for value_vars
+value_name set the name of var_name
+e.g
+pd.melt(billboard id_vars['year'], var_name='week', value_name ='rating')
+In this example, from dataframe billaborad, except year col, other columns are changed to row
+with the name week then each value is named rating
+
+How to cope with the repeated data
+dataframe.drop_duplicates() removes all equal rows
+
+Data type
+import seaborn as sns for calling data type methods
+tochange to another datatype = df['col'].astype(coverted datatype like str)
+pd.to_numeric() to change to a float datatype
+If one wants to convert str to float, error occurs to avoid this situation
+,errors = 'ignore' is used to ignore unconvertable data 
+,='coerce' just makes unchangable data as NAN
+downcast ='float 'is used to make the data size smaller.
+
+Category data type
+a datatype with a fixed number of data types
+if choices are fixed catergory type is useful compared to str
+
+String
+string is created with ''
+first letter index is 0 last negative index is -1 to select char = str[num]
+
+'str'.join()
+add str between strings
+splitlines()
+to split lines with the reference of lines
+.replace("from","to") to change str from"from" to "to"
+
+string formatting
+s = "It is just a {}!"
+{} is the place to set a certain str
+s.format('str to put in brackets')
+inside the bracket, variable can be put, then, in method a cetain variable is sent
+
+number formating
+{:,} to put with commas
+{:.4%} to put 4 digits under zero like 0.0001
+{:05d} to show 5 digit number and empty place will be substituted by 0
+
+Regular expression grammar method
+
+import.re
+re.search
+re.match
+re.fullmatch
+re.split
+re.findall
+re.finditer
+re.sub
+further learning re.
+
+apply method
+.apply(function) to apply function each row  of the dataframe
+df['a'].apply() to apply only for a column
+apply(function , n=2)
+to apply for first two rows
+
+

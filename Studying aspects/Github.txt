@@ -1,0 +1,80 @@
+Some bacis git CLI codes
+$ git init
+line to create local repository
+$ git config --global user.email "Email"
+line to register user email
+$ git config -- global user.name "User name"
+line to register username
+$git add file
+send a file to stage (number of files to be added in commit)
+$ git commit -m "message"
+create a commit with the message
+$ git log
+code to check the information of commits such as username, email, message, Data, and commit ID
+$ git checkout git-ID
+move to commit with the identical ID
+$ git checkout -
+to checkout to the newest commit
+$ git remote add origin Github repository URL
+To set the remote repository connected to local directory
+$ git push origin master
+to push checked-out commit in the master branch to the remote repository
+$ git clone  Github repository URL . ("  ." is important )
+To clone the remote repository to local directory
+$ git pull origin master
+to get the new commit in the remote repository and copy the changed files in the local repository
+
+origin is the typical name for the repository so means add reposity named origin from the URL
+$ git remote add origin Github repository URL
+master is the main branch of the git
+
+Branch is the method to make different versions from the same version(commit)
+Without making different branches, news commits can only be made with the newest commits
+Head is a pointer to check out(select) different commits or branches
+
+when creating new branches make sure checking out the branch that one wants to make a branch from
+
+Merging
+3 types
+Merge commit - after merging branches a new commit is created
+Fast Forward - after merging branches the same commit is created
+Conflict - in case the same files are changed simultaneously in the same place
+
+Pull request is a polite method to ask other teammates that one's branches can be merged to the master branch
+reviews comments and votes are used to communicate with other teammates
+
+Fetch is the code to update the branches from repository unlike the pull downloading actual codes.
+Thus after fetching, pull is required to match the local diretory(master) with repository
+
+Tag is the message pointing the certain commit before releasing
+
+Fork is the process to copy other's repository in my repository 
+similar to branching, but cannot access to the original repository (To be a contributer)
+This forked repository can be merged to the orignal repository by pull requesting to the original repository
+remote is used to check the changes of the orignal repository upstream is a typical name for the original repository
+
+Rebase is similar to merge (merging two branches into one)
+However, rebasing is not creating a new merged commit but just branching changed features from the master branch
+
+amend is to fix a latest commit even if the commit is already pushed
+we do not need to make another commit
+However, if we want to push the amended commit forced push is required
+
+Cherry picking
+when the user wants a change in a certain commit of a branch, cherry picking is utilized 
+
+Reset
+reset the commit to a certain commit of the branch
+soft/mixed reset keep changed parts of the the past commit
+hard reset removes all history of commits the after the selected commit
+
+revert
+if you want to keep the history of the commits after the reverted commit, revert is used 
+
+Stash
+if you want to keep the changed part but not complete, use stash to save the changed parts and call from stash part for the future
+
+The git theory
+after adding unstaged files from working tree  to stage
+index file is showing the stage status
+objects directory is showing the copied object added from working tree
